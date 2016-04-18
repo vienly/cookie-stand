@@ -114,35 +114,37 @@ function displaySales() {
   var allShopContainers = document.getElementsByClassName('shop');
   console.log(allShopContainers);
 
-  var body = document.getElementById('pikePlace'), tbl = document.createElement('table');
+  var container = document.getElementById('displaySaleData'), tbl = document.createElement('table');
 
   //location heading
-  var row;
   var headings = tbl.insertRow();
-  var storeLog;
-  var label = headings.insertCell();
+  var cellEntry = headings.insertCell();
   var currentShop;
-  var logItem;
-  label.appendChild(document.createTextNode('Location'));
+  var row;
+  cellEntry.appendChild(document.createTextNode('Location'));
 
+  //location and hour headings
   for (var i = 0; i < hours.length; i++) {
-    label = headings.insertCell();
-    label.appendChild(document.createTextNode(hours[i]));
+    cellEntry = headings.insertCell();
+    cellEntry.appendChild(document.createTextNode(hours[i]));
   }
 
+  //log cell entries
   console.log(allShops.shops.length);
   for (var j = 0; j < allShops.shops.length; j++) {
     currentShop = allShops.shops[j];
     row = tbl.insertRow();
-    label = row.insertCell();
-    label.appendChild(document.createTextNode(currentShop.name));
+    //log row label
+    cellEntry = row.insertCell();
+    cellEntry.appendChild(document.createTextNode(currentShop.name));
+    //log sales
     for (var k = 0; k < 15; k++) {
-      logItem = row.insertCell();
-      logItem.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
+      cellEntry = row.insertCell();
+      cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
     }
   }
 
-  body.appendChild(tbl);
+  container.appendChild(tbl);
 }
 
 displaySales();
