@@ -112,24 +112,37 @@ for (var l = 0; l < 9; l++) {
 
 function displaySales() {
   var allShopContainers = document.getElementsByClassName('shop');
-  var currentShop;
-  var saleList;
-  var items;
-  var itemText;
   console.log(allShopContainers);
-  for (var i = 0; i < 5; i++) {
-    currentShop = allShops.shops[i];
-    allShopContainers[i].appendChild(document.createTextNode(currentShop.name));
-    saleList = document.createElement('ul');
-    for (var j = 0; j < 15; j++) {
-      item = document.createElement('li');
-      itemText = document.createTextNode(hours[j] + ' : ' + currentShop.cookiesPerHour[j] + ' cookies');
-      item.appendChild(itemText);
-      saleList.appendChild(item);
-    }
-    allShopContainers[i].appendChild(saleList);
-    console.log(allShopContainers[i]);
+
+  var body = document.getElementById('pikePlace'), tbl = document.createElement('table');
+
+  //location heading
+  var row;
+  var headings = tbl.insertRow();
+  var storeLog;
+  var label = headings.insertCell();
+  var currentShop;
+  var logItem;
+  label.appendChild(document.createTextNode('Location'));
+
+  for (var i = 0; i < hours.length; i++) {
+    label = headings.insertCell();
+    label.appendChild(document.createTextNode(hours[i]));
   }
+
+  console.log(allShops.shops.length);
+  for (var j = 0; j < allShops.shops.length; j++) {
+    currentShop = allShops.shops[j];
+    row = tbl.insertRow();
+    label = row.insertCell();
+    label.appendChild(document.createTextNode(currentShop.name));
+    for (var k = 0; k < 15; k++) {
+      logItem = row.insertCell();
+      logItem.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
+    }
+  }
+
+  body.appendChild(tbl);
 }
 
 displaySales();

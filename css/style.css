@@ -24,7 +24,9 @@ h1 {
 }
 
 h2 {
+  font-family: 'Tangerine', cursive;
   text-align: center;
+  font-size: 48px;
   color: #bbbbbb;
   margin: 0px 0 70px 0;
 }
