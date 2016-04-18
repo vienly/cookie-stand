@@ -81,8 +81,6 @@ function generateSales() {
   alkiShop.fill();
 }
 
-generateSales();
-
 var allShops = {
   shops: new Array(),
   addShop: function(shopName) {
@@ -93,6 +91,8 @@ var allShops = {
     this.shops.splice(index, 1);
   }
 };
+
+generateSales();
 
 allShops.addShop(pikePlaceShop);
 allShops.addShop(seaTacShop);
