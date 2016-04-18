@@ -5,10 +5,13 @@ var pikePlaceShop = {
   avgCookie: 5.2,
   custPerHour: 0,
   cookiesPerHour: new Array(),
+  totalCookiesSold: 0,
   fill: function() {
     for (var i = 0; i < 15; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-      this.cookiesPerHour.push(Math.floor(this.custPerHour * this.avgCookie));
+      var tempt = Math.floor(this.custPerHour * this.avgCookie);
+      this.cookiesPerHour.push(tempt);
+      this.totalCookiesSold += tempt;
     }
   }
 };
@@ -20,11 +23,13 @@ var seaTacShop = {
   avgCookie: 1.2,
   custPerHour: 0,
   cookiesPerHour: new Array(),
+  totalCookiesSold: 0,
   fill: function() {
     for (var i = 0; i < 15; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-      this.cookiesPerHour.push(Math.floor(this.custPerHour * this.avgCookie));
-    }
+      var tempt = Math.floor(this.custPerHour * this.avgCookie);
+      this.cookiesPerHour.push(tempt);
+      this.totalCookiesSold += tempt;    }
   }
 };
 
@@ -35,11 +40,13 @@ var southCenterShop = {
   avgCookie: 1.9,
   custPerHour: 0,
   cookiesPerHour: new Array(),
+  totalCookiesSold:0,
   fill: function() {
     for (var i = 0; i < 15; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-      this.cookiesPerHour.push(Math.floor(this.custPerHour * this.avgCookie));
-    }
+      var tempt = Math.floor(this.custPerHour * this.avgCookie);
+      this.cookiesPerHour.push(tempt);
+      this.totalCookiesSold += tempt;    }
   }
 };
 
@@ -50,11 +57,13 @@ var bellSquareShop = {
   avgCookie: 3.3,
   custPerHour: 0,
   cookiesPerHour: new Array(),
+  totalCookiesSold: 0,
   fill: function() {
     for (var i = 0; i < 15; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-      this.cookiesPerHour.push(Math.floor(this.custPerHour * this.avgCookie));
-    }
+      var tempt = Math.floor(this.custPerHour * this.avgCookie);
+      this.cookiesPerHour.push(tempt);
+      this.totalCookiesSold += tempt;    }
   }
 };
 
@@ -65,11 +74,13 @@ var alkiShop = {
   avgCookie: 2.6,
   custPerHour: 0,
   cookiesPerHour: new Array(),
+  totalCookiesSold: 0,
   fill: function() {
     for (var i = 0; i < 15; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-      this.cookiesPerHour.push(Math.floor(this.custPerHour * this.avgCookie));
-    }
+      var tempt = Math.floor(this.custPerHour * this.avgCookie);
+      this.cookiesPerHour.push(tempt);
+      this.totalCookiesSold += tempt;    }
   }
 };
 
@@ -128,6 +139,8 @@ function displaySales() {
     cellEntry = headings.insertCell();
     cellEntry.appendChild(document.createTextNode(hours[i]));
   }
+  cellEntry = headings.insertCell();
+  cellEntry.appendChild(document.createTextNode('Total Sold'));
 
   //log cell entries
   console.log(allShops.shops.length);
@@ -142,6 +155,8 @@ function displaySales() {
       cellEntry = row.insertCell();
       cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
     }
+    cellEntry = row.insertCell();
+    cellEntry.appendChild(document.createTextNode(currentShop.totalCookiesSold));
   }
 
   container.appendChild(tbl);
