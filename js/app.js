@@ -112,24 +112,39 @@ for (var l = 0; l < 9; l++) {
 
 function displaySales() {
   var allShopContainers = document.getElementsByClassName('shop');
-  var currentShop;
-  var saleList;
-  var items;
-  var itemText;
   console.log(allShopContainers);
-  for (var i = 0; i < 5; i++) {
-    currentShop = allShops.shops[i];
-    allShopContainers[i].appendChild(document.createTextNode(currentShop.name));
-    saleList = document.createElement('ul');
-    for (var j = 0; j < 15; j++) {
-      item = document.createElement('li');
-      itemText = document.createTextNode(hours[j] + ' : ' + currentShop.cookiesPerHour[j] + ' cookies');
-      item.appendChild(itemText);
-      saleList.appendChild(item);
-    }
-    allShopContainers[i].appendChild(saleList);
-    console.log(allShopContainers[i]);
+
+  var container = document.getElementById('displaySaleData'), tbl = document.createElement('table');
+
+  //location heading
+  var headings = tbl.insertRow();
+  var cellEntry = headings.insertCell();
+  var currentShop;
+  var row;
+  cellEntry.appendChild(document.createTextNode('Location'));
+
+  //location and hour headings
+  for (var i = 0; i < hours.length; i++) {
+    cellEntry = headings.insertCell();
+    cellEntry.appendChild(document.createTextNode(hours[i]));
   }
+
+  //log cell entries
+  console.log(allShops.shops.length);
+  for (var j = 0; j < allShops.shops.length; j++) {
+    currentShop = allShops.shops[j];
+    row = tbl.insertRow();
+    //log row label
+    cellEntry = row.insertCell();
+    cellEntry.appendChild(document.createTextNode(currentShop.name));
+    //log sales
+    for (var k = 0; k < 15; k++) {
+      cellEntry = row.insertCell();
+      cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
+    }
+  }
+
+  container.appendChild(tbl);
 }
 
 displaySales();
