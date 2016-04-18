@@ -1,0 +1,49 @@
+body {
+  font-family: helvetica, sans-serif;
+  margin: 0 auto;
+  max-width: 600px;
+  background: #232323;
+  /*background-image: url('../img/background.jpg');*/
+}
+
+div {
+  height: 200px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  position: relative;
+  margin: 40px 0 0 0;
+  border-radius: 12px;
+}
+
+h1 {
+  font-family: 'Londrina Shadow', cursive;
+  text-align: center;
+  font-size: 66px;
+  color: #aaaaaa;
+  margin: 60px 0 0 0;
+}
+
+h2 {
+  text-align: center;
+  color: #bbbbbb;
+  margin: 0px 0 70px 0;
+}
+
+p {
+  color: rgba(255,255,255,1);
+  background: black;
+  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
+  padding: 10px;
+  line-height: 28px;
+  text-align: justify;
+  position: absolute;
+  bottom: 0;
+  margin: 0;
+  height: 80px;
+}
+
+.first {
+  background-image: url('../img/salmon.png');
+}
