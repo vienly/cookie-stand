@@ -20,6 +20,27 @@ class cookieShop {
     }
   }
 
+  logSaleData() {
+    var cellEntry;
+    // row = tbl.insertRow();
+    var row = document.createElement('tr');
+    //log row label column 1
+    var th = document.createElement('th');
+    // cellEntry = row.insertCell();
+    th.appendChild(document.createTextNode(this.name));
+    row.appendChild(th);
+    //log sales, columns 2-15
+    for (var i = 0; i < 15; i++) {
+      //-1 index is used to insert cell at the end of the row
+      cellEntry = row.insertCell(-1);
+      cellEntry.appendChild(document.createTextNode(this.cookiesPerHour[i]));
+    }
+    //log total cookies sold on last column
+    cellEntry = row.insertCell(-1);
+    cellEntry.appendChild(document.createTextNode(this.totalCookiesSold));
+
+    return row;
+  }
 }
 
 var allShops = {
@@ -64,57 +85,25 @@ for (var l = 0; l < 9; l++) {
 }
 
 function displaySales() {
-  var container = document.getElementById('displaySaleData');
-  var tbl = document.createElement('table');
-
-  var currentShop;
-  var cellEntry;
-  var th;
-  var row;
-
-  var headings = tbl.insertRow();
-  th = document.createElement('th');
-  // cellEntry = headings.insertCell();
-  // th.appendChild(document.createTextNode('Location'));
-  th.appendChild(document.createTextNode(''));
-  headings.appendChild(th);
-
-  //location and hour headings
-  for (var i = 0; i < hours.length; i++) {
-    //-1 index is used to insert cell at the end of the row
-    th = document.createElement('th');
-    // cellEntry = headings.insertCell(-1);
-    th.appendChild(document.createTextNode(hours[i]));
-    headings.appendChild(th);
+  var tbl = document.getElementById('saleDataTable');
+  var hourLabelRow = document.createElement('tr');
+  var headingCell = document.createElement('th');
+  headingCell.appendChild(document.createTextNode(''));
+  hourLabelRow.appendChild(headingCell);
+  for (var j = 0; j < hours.length; j++) {
+    headingCell = document.createElement('th');
+    headingCell.appendChild(document.createTextNode(hours[j]));
+    hourLabelRow.appendChild(headingCell);
   }
+  tbl.appendChild(hourLabelRow);
 
-  // total sold heading
-  th = document.createElement('th');
-  // cellEntry = headings.insertCell();
-  th.appendChild(document.createTextNode('Total Sold'));
-  headings.appendChild(th);
+  headingCell = document.createElement('th');
+  headingCell.appendChild(document.createTextNode('Total Sold'));
+  hourLabelRow.appendChild(headingCell);
 
-  //log cell entries
-  for (var j = 0; j < allShops.shops.length; j++) {
-    currentShop = allShops.shops[j];
-    row = tbl.insertRow();
-    //log row label column 1
-    th = document.createElement('th');
-    // cellEntry = row.insertCell();
-    th.appendChild(document.createTextNode(currentShop.name));
-    row.appendChild(th);
-    //log sales, columns 2-15
-    for (var k = 0; k < 15; k++) {
-      //-1 index is used to insert cell at the end of the row
-      cellEntry = row.insertCell(-1);
-      cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
-    }
-    //log total cookies sold on last column
-    cellEntry = row.insertCell(-1);
-    cellEntry.appendChild(document.createTextNode(currentShop.totalCookiesSold));
+  for (var i = 0; i < allShops.shops.length; i++) {
+    tbl.appendChild(allShops.shops[i].logSaleData());
   }
-
-  container.appendChild(tbl);
 }
 
 displaySales();
