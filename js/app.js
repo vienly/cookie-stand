@@ -19,6 +19,7 @@ class cookieShop {
       this.totalCookiesSold += tempt;
     }
   }
+
 }
 
 var allShops = {
