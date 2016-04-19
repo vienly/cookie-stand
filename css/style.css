@@ -49,3 +49,13 @@ p {
 .first {
   background-image: url('../img/salmon.png');
 }
+
+.background-image {
+  position:fixed;
+  left:0px;
+  bottom:0px;
+  height:420px;
+  width:100%;
+  background-image: url('../img/milkwave.png');
+  background-size: contain;
+}
