@@ -12,7 +12,8 @@ div > table {
 }
 
 td {
-  font-family: 'Crimson Text', serif;
+  /*font-family: 'Crimson Text', serif;*/
+  font-family: 'Quicksand', sans-serif;
   font-size: 14px;
   padding: 10px;
   border: 1px solid #FFFAF0;
