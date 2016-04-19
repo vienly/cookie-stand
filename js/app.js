@@ -74,7 +74,8 @@ function displaySales() {
   var headings = tbl.insertRow();
   th = document.createElement('th');
   // cellEntry = headings.insertCell();
-  th.appendChild(document.createTextNode('Location'));
+  // th.appendChild(document.createTextNode('Location'));
+  th.appendChild(document.createTextNode(''));
   headings.appendChild(th);
 
   //location and hour headings
@@ -108,7 +109,7 @@ function displaySales() {
       cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
     }
     //log total cookies sold on last column
-    cellEntry = row.insertCell();
+    cellEntry = row.insertCell(-1);
     cellEntry.appendChild(document.createTextNode(currentShop.totalCookiesSold));
   }
 
