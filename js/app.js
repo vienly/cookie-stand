@@ -92,6 +92,8 @@ function generateSales() {
   alkiShop.fill();
 }
 
+generateSales();
+
 var allShops = {
   shops: new Array(),
   addShop: function(shopName) {
@@ -102,8 +104,6 @@ var allShops = {
     this.shops.splice(index, 1);
   }
 };
-
-generateSales();
 
 allShops.addShop(pikePlaceShop);
 allShops.addShop(seaTacShop);
@@ -122,16 +122,15 @@ for (var l = 0; l < 9; l++) {
 }
 
 function displaySales() {
-  var allShopContainers = document.getElementsByClassName('shop');
-  console.log(allShopContainers);
+  var container = document.getElementById('displaySaleData');
+  var tbl = document.createElement('table');
 
-  var container = document.getElementById('displaySaleData'), tbl = document.createElement('table');
-
-  //location heading
-  var headings = tbl.insertRow();
-  var cellEntry = headings.insertCell();
   var currentShop;
+  var cellEntry;
   var row;
+
+  var headings = tbl.insertRow();
+  cellEntry = headings.insertCell();
   cellEntry.appendChild(document.createTextNode('Location'));
 
   //location and hour headings
@@ -143,18 +142,18 @@ function displaySales() {
   cellEntry.appendChild(document.createTextNode('Total Sold'));
 
   //log cell entries
-  console.log(allShops.shops.length);
   for (var j = 0; j < allShops.shops.length; j++) {
     currentShop = allShops.shops[j];
     row = tbl.insertRow();
-    //log row label
+    //log row label column 1
     cellEntry = row.insertCell();
     cellEntry.appendChild(document.createTextNode(currentShop.name));
-    //log sales
+    //log sales, columns 2-15
     for (var k = 0; k < 15; k++) {
       cellEntry = row.insertCell();
       cellEntry.appendChild(document.createTextNode(currentShop.cookiesPerHour[k]));
     }
+    //log total cookies sold on last column
     cellEntry = row.insertCell();
     cellEntry.appendChild(document.createTextNode(currentShop.totalCookiesSold));
   }
