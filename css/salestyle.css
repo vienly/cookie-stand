@@ -1,6 +1,11 @@
 body {
+  font-family: helvetica, sans-serif;
   color: #FFFAF0;
   background-color: #2F4F4F;
+}
+
+form {
+
 }
 
 div > table {

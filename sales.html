@@ -6,7 +6,22 @@
     <link rel="stylesheet" href="css/salestyle.css" type="text/css">
   </head>
   <body>
-    <div id='displaySaleData'>
+
+    <form action="action_page.php">
+      Shop:
+      <input type="text" name="shopName" placeholder="Shop Name">
+      Min Customers:
+      <input type="text" name="lastname" placeholder="min cust">
+      Max Customers:
+      <input type="text" name="lastname" placeholder="max cust">
+      Avg cookies:
+      <input type="text" name="lastname" placeholder="avg cookies">
+      <input type="submit" value="Submit">
+    </form>
+    <br><br>
+
+    <div id='saleDataContainer'>
+      <table id='saleDataTable'></table>
     </div>
     <script src="js/app.js" type="text/javascript"></script>
 
