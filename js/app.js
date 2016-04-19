@@ -1,5 +1,13 @@
 'use strict';
 
+var hours = [];
+for (var k = 0; k < 6; k++) {
+  hours.push((k + 6) + ' AM');
+}
+for (var l = 0; l < 9; l++) {
+  hours.push(l + ' PM');
+}
+
 class cookieShop {
   constructor(name, minCust, maxCust, avgCookie) {
     this.name = name;
@@ -12,7 +20,7 @@ class cookieShop {
   }
 
   logCookiesSold() {
-    for (var i = 0; i < 15; i++) {
+    for (var i = 0; i < hours.length; i++) {
       this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
       var tempt = Math.floor(this.custPerHour * this.avgCookie);
       this.cookiesPerHour.push(tempt);
@@ -76,14 +84,6 @@ allShops.addShop(southCenterShop);
 allShops.addShop(bellSquareShop);
 allShops.addShop(alkiShop);
 
-var hours = [];
-for (var k = 0; k < 6; k++) {
-  hours.push((k + 6) + ' AM');
-}
-for (var l = 0; l < 9; l++) {
-  hours.push(l + ' PM');
-}
-
 function displaySales() {
   var tbl = document.getElementById('saleDataTable');
   var hourLabelRow = document.createElement('tr');
@@ -107,3 +107,6 @@ function displaySales() {
 }
 
 displaySales();
+
+
+var newShopForm = document.getElementById('addNewShop');
