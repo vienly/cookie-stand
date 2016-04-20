@@ -8,15 +8,23 @@
   <body>
 
     <form type='submit' id='addNewShop'>
-      Shop:
-      <input type="text" name="shopName" placeholder="Shop Name">
-      Min Customers:
-      <input type="text" name="minCust" placeholder="min cust">
-      Max Customers:
-      <input type="text" name="maxCust" placeholder="max cust">
-      Avg cookies:
-      <input type="text" name="avgCookies" placeholder="avg cookies">
-      <input id='submitBtn' type="submit" value="Submit">
+      <fieldset>
+        <legend>Add a new store</legend>
+
+        <label for='shopName'>Shop:</label>
+        <input type='text' name='shopName' placeholder='Shop Name'>
+
+        <label for='minCust'>Min Customers:</label>
+        <input type="number" name="minCust" placeholder="min cust">
+
+        <label for='maxCust'>Max Customers:</label>
+        <input type="number" name="maxCust" placeholder="max cust">
+
+        <label for='avgCookies'>Avg cookies:</label>
+        <input type="float" name="avgCookies" placeholder="avg cookies">
+
+        <input id='submitBtn' type="submit" value="Submit">
+      </fieldset>
     </form>
     <br><br>
 
