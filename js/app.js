@@ -148,12 +148,9 @@ function createNewShop(event) {
       console.log(allShops.shops[i].minCust);
       console.log(allShops.shops[i].maxCust);
       console.log(allShops.shops[i].avgCookie);
-      //table.textContent = '';
-      //table = createTable();
-      for (var j = 0; j < allShops.shops.length; j++) {
-        allShops.shops[j].logCookiesSold();
-        //allShops.shops[j].logSaleData();
-      }
+
+      currentShopIteration.logCookiesSold();
+      
       displaySaleData();
       console.log(allShops.shops.length);
     }
