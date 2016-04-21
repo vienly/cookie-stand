@@ -145,12 +145,12 @@ function createNewShop(event) {
       currentShopIteration.minCust = minCustInput;
       currentShopIteration.maxCust = maxCustInput;
       currentShopIteration.avgCookie = avgCookiesInput;
-      console.log(allShops.shops[i].minCust);
-      console.log(allShops.shops[i].maxCust);
-      console.log(allShops.shops[i].avgCookie);
+      // console.log(allShops.shops[i].minCust);
+      // console.log(allShops.shops[i].maxCust);
+      // console.log(allShops.shops[i].avgCookie);
 
       currentShopIteration.logCookiesSold();
-      
+
       displaySaleData();
       console.log(allShops.shops.length);
     }
