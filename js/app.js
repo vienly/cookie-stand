@@ -8,19 +8,13 @@ for (var l = 0; l < 9; l++) {
   hours.push(l + ' PM');
 }
 
-var allShopDataArray = [['Pike Place', 17, 88, 5.2],
-                        ['SeaTac Airport', 6, 24, 1.2],
-                        ['Southcenter', 11, 38, 1.9],
-                        ['Bellevue Square', 20, 48, 3.3],
-                        ['Alki', 3, 24, 2.6]];
-
 var table;
 var tbody = document.createElement('tbody');
 
+// Initial table and attach reference to the element
 function createTable() {
   table = document.getElementById('saleDataTable');
   var theading = document.createElement('thead');
-  // theading = document.createElement('thead');
   var headingCell = document.createElement('th');
   headingCell.appendChild(document.createTextNode(''));
   theading.appendChild(headingCell);
@@ -64,28 +58,33 @@ CookieShop.prototype.logCookiesSold = function() {
   }
 }
 
-// Initial data logging
+// Shop manager for all shops
 var allShops = {
   shops: new Array(),
+  allShopDataArray: [['Pike Place', 17, 88, 5.2],
+                      ['SeaTac Airport', 6, 24, 1.2],
+                      ['Southcenter', 11, 38, 1.9],
+                      ['Bellevue Square', 20, 48, 3.3],
+                      ['Alki', 3, 24, 2.6]],
   addShop: function(shop) {
     this.shops.push(shop);
   },
   removeShop: function(shop) {
     var index = this.shops.indexOf(shop);
     this.shops.splice(index, 1);
+  },
+  initShops: function() {
+    var newShopHolder;
+    this.allShopDataArray.forEach(function(shop){
+      newShopHolder = new CookieShop(shop[0], shop[1], shop[2], shop[3]);
+      newShopHolder.logCookiesSold();
+      // Cannot use this here because statement is inside of a forEach scope
+      allShops.addShop(newShopHolder);
+    });
   }
 };
 
-function initShops() {
-  var newShopHolder;
-  allShopDataArray.forEach(function(shop){
-    newShopHolder = new CookieShop(shop[0], shop[1], shop[2], shop[3]);
-    newShopHolder.logCookiesSold();
-    allShops.addShop(newShopHolder);
-  });
-}
-
-initShops();
+allShops.initShops();
 
 function displaySaleData() {
   var newTbody = document.createElement('tbody');
@@ -142,19 +141,19 @@ function createNewShop(event) {
       currentShopIteration.logCookiesSold();
 
       displaySaleData();
-      allShopDataArray[i] = [shopNameInput, minCustInput, maxCustInput, avgCookiesInput];
+      allShops.allShopDataArray[i] = [shopNameInput, minCustInput, maxCustInput, avgCookiesInput];
     }
   }
 
   // If loop is exhausted
   if(i >= allShops.shops.length) {
-    allShopDataArray.push([shopNameInput, minCustInput, maxCustInput, avgCookiesInput]);
+    allShops.allShopDataArray.push([shopNameInput, minCustInput, maxCustInput, avgCookiesInput]);
     var newShop = new CookieShop(shopNameInput, minCustInput, maxCustInput, avgCookiesInput);
     newShop.logCookiesSold();
     allShops.addShop(newShop);
     displaySaleData();
   }
-  console.log(allShopDataArray);
+  console.log(allShops.allShopDataArray);
 
   event.target.shopName.value = null;
   event.target.minCust.value = null;
