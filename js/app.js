@@ -8,13 +8,25 @@ for (var l = 0; l < 9; l++) {
   hours.push(l + ' PM');
 }
 
+var originalShopData = [['Pike Place', 17, 88, 5.2],
+                        ['SeaTac Airport', 6, 24, 1.2],
+                        ['Southcenter', 11, 38, 1.9],
+                        ['Bellevue Square', 20, 48, 3.3],
+                        ['Alki', 3, 24, 2.6]];
+//
+// var pikePlaceShop = new CookieShop('Pike Place', 17, 88, 5.2);
+// var seaTacShop = new CookieShop('SeaTac Airport', 6, 24, 1.2);
+// var southCenterShop = new CookieShop('Southcenter', 11, 38, 1.9);
+// var bellSquareShop = new CookieShop('Bellevue Square', 20, 48, 3.3);
+// var alkiShop = new CookieShop('Alki', 3, 24, 2.6);
+
 var table;
-var theading = document.createElement('thead');
 var tbody = document.createElement('tbody');
 
 function createTable() {
   table = document.getElementById('saleDataTable');
-  theading = document.createElement('thead');
+  var theading = document.createElement('thead');
+  // theading = document.createElement('thead');
   var headingCell = document.createElement('th');
   headingCell.appendChild(document.createTextNode(''));
   theading.appendChild(headingCell);
@@ -49,9 +61,10 @@ class CookieShop {
 CookieShop.prototype.logCookiesSold = function() {
   this.totalCookiesSold = 0;
   this.cookiesPerHour = new Array();
+  var tempt;
   for (var i = 0; i < hours.length; i++) {
     this.custPerHour = Math.floor(Math.random() * (this.maxCust - this.minCust + 1)) + this.minCust;
-    var tempt = Math.floor(this.custPerHour * this.avgCookie);
+    tempt = Math.floor(this.custPerHour * this.avgCookie);
     this.cookiesPerHour.push(tempt);
     this.totalCookiesSold += tempt;
   }
@@ -68,27 +81,42 @@ var allShops = {
   }
 };
 
-var pikePlaceShop = new CookieShop('Pike Place', 17, 88, 5.2);
-var seaTacShop = new CookieShop('SeaTac Airport', 6, 24, 1.2);
-var southCenterShop = new CookieShop('Southcenter', 11, 38, 1.9);
-var bellSquareShop = new CookieShop('Bellevue Square', 20, 48, 3.3);
-var alkiShop = new CookieShop('Alki', 3, 24, 2.6);
+function initShops() {
+  var newShopHolder;
+  originalShopData.forEach(function(shop){
+    newShopHolder = new CookieShop(shop[0], shop[1], shop[2], shop[3]);
+    newShopHolder.logCookiesSold();
+    allShops.addShop(newShopHolder);
+  });
+
+  generateSales();
+}
+initShops();
+
+// var pikePlaceShop = new CookieShop('Pike Place', 17, 88, 5.2);
+// var seaTacShop = new CookieShop('SeaTac Airport', 6, 24, 1.2);
+// var southCenterShop = new CookieShop('Southcenter', 11, 38, 1.9);
+// var bellSquareShop = new CookieShop('Bellevue Square', 20, 48, 3.3);
+// var alkiShop = new CookieShop('Alki', 3, 24, 2.6);
 
 function generateSales() {
-  pikePlaceShop.logCookiesSold();
-  seaTacShop.logCookiesSold();
-  southCenterShop.logCookiesSold();
-  bellSquareShop.logCookiesSold();
-  alkiShop.logCookiesSold();
+  allShops.shops.forEach(function(shop) {
+    shop.logCookiesSold();
+  })
+  // pikePlaceShop.logCookiesSold();
+  // seaTacShop.logCookiesSold();
+  // southCenterShop.logCookiesSold();
+  // bellSquareShop.logCookiesSold();
+  // alkiShop.logCookiesSold();
 }
 
-generateSales();
+// generateSales();
 
-allShops.addShop(pikePlaceShop);
-allShops.addShop(seaTacShop);
-allShops.addShop(southCenterShop);
-allShops.addShop(bellSquareShop);
-allShops.addShop(alkiShop);
+// allShops.addShop(pikePlaceShop);
+// allShops.addShop(seaTacShop);
+// allShops.addShop(southCenterShop);
+// allShops.addShop(bellSquareShop);
+// allShops.addShop(alkiShop);
 
 function displaySaleData() {
   var newTbody = document.createElement('tbody');
@@ -145,9 +173,6 @@ function createNewShop(event) {
       currentShopIteration.minCust = minCustInput;
       currentShopIteration.maxCust = maxCustInput;
       currentShopIteration.avgCookie = avgCookiesInput;
-      // console.log(allShops.shops[i].minCust);
-      // console.log(allShops.shops[i].maxCust);
-      // console.log(allShops.shops[i].avgCookie);
 
       currentShopIteration.logCookiesSold();
 
