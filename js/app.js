@@ -8,17 +8,11 @@ for (var l = 0; l < 9; l++) {
   hours.push(l + ' PM');
 }
 
-var originalShopData = [['Pike Place', 17, 88, 5.2],
+var allShopDataArray = [['Pike Place', 17, 88, 5.2],
                         ['SeaTac Airport', 6, 24, 1.2],
                         ['Southcenter', 11, 38, 1.9],
                         ['Bellevue Square', 20, 48, 3.3],
                         ['Alki', 3, 24, 2.6]];
-//
-// var pikePlaceShop = new CookieShop('Pike Place', 17, 88, 5.2);
-// var seaTacShop = new CookieShop('SeaTac Airport', 6, 24, 1.2);
-// var southCenterShop = new CookieShop('Southcenter', 11, 38, 1.9);
-// var bellSquareShop = new CookieShop('Bellevue Square', 20, 48, 3.3);
-// var alkiShop = new CookieShop('Alki', 3, 24, 2.6);
 
 var table;
 var tbody = document.createElement('tbody');
@@ -70,53 +64,28 @@ CookieShop.prototype.logCookiesSold = function() {
   }
 }
 
+// Initial data logging
 var allShops = {
   shops: new Array(),
-  addShop: function(shopName) {
-    this.shops.push(shopName);
+  addShop: function(shop) {
+    this.shops.push(shop);
   },
-  removeShop: function(shopName) {
-    var index = this.shops.indexOf(shopName);
+  removeShop: function(shop) {
+    var index = this.shops.indexOf(shop);
     this.shops.splice(index, 1);
   }
 };
 
 function initShops() {
   var newShopHolder;
-  originalShopData.forEach(function(shop){
+  allShopDataArray.forEach(function(shop){
     newShopHolder = new CookieShop(shop[0], shop[1], shop[2], shop[3]);
     newShopHolder.logCookiesSold();
     allShops.addShop(newShopHolder);
   });
-
-  generateSales();
 }
+
 initShops();
-
-// var pikePlaceShop = new CookieShop('Pike Place', 17, 88, 5.2);
-// var seaTacShop = new CookieShop('SeaTac Airport', 6, 24, 1.2);
-// var southCenterShop = new CookieShop('Southcenter', 11, 38, 1.9);
-// var bellSquareShop = new CookieShop('Bellevue Square', 20, 48, 3.3);
-// var alkiShop = new CookieShop('Alki', 3, 24, 2.6);
-
-function generateSales() {
-  allShops.shops.forEach(function(shop) {
-    shop.logCookiesSold();
-  })
-  // pikePlaceShop.logCookiesSold();
-  // seaTacShop.logCookiesSold();
-  // southCenterShop.logCookiesSold();
-  // bellSquareShop.logCookiesSold();
-  // alkiShop.logCookiesSold();
-}
-
-// generateSales();
-
-// allShops.addShop(pikePlaceShop);
-// allShops.addShop(seaTacShop);
-// allShops.addShop(southCenterShop);
-// allShops.addShop(bellSquareShop);
-// allShops.addShop(alkiShop);
 
 function displaySaleData() {
   var newTbody = document.createElement('tbody');
@@ -148,7 +117,6 @@ function displaySaleData() {
 
 displaySaleData();
 
-
 function createNewShop(event) {
   event.preventDefault();
 
@@ -157,19 +125,16 @@ function createNewShop(event) {
   }
 
   var shopNameInput = event.target.shopName.value;
-//  console.log(shopNameInput);
   var minCustInput = Number.parseInt(event.target.minCust.value);
   var maxCustInput = Number.parseInt(event.target.maxCust.value);
   var avgCookiesInput = Number.parseFloat(event.target.avgCookies.value);
   var newTable;
-  var flag = true;
 
   var currentShopIteration;
 
   for (var i = 0; i < allShops.shops.length; i++) {
     currentShopIteration = allShops.shops[i];
     if (shopNameInput == currentShopIteration.name) {
-      flag = false;
       currentShopIteration.minCust = minCustInput;
       currentShopIteration.maxCust = maxCustInput;
       currentShopIteration.avgCookie = avgCookiesInput;
@@ -177,16 +142,19 @@ function createNewShop(event) {
       currentShopIteration.logCookiesSold();
 
       displaySaleData();
-      console.log(allShops.shops.length);
+      allShopDataArray[i] = [shopNameInput, minCustInput, maxCustInput, avgCookiesInput];
     }
   }
 
-  if(flag) {
+  // If loop is exhausted
+  if(i >= allShops.shops.length) {
+    allShopDataArray.push([shopNameInput, minCustInput, maxCustInput, avgCookiesInput]);
     var newShop = new CookieShop(shopNameInput, minCustInput, maxCustInput, avgCookiesInput);
     newShop.logCookiesSold();
     allShops.addShop(newShop);
     displaySaleData();
   }
+  console.log(allShopDataArray);
 
   event.target.shopName.value = null;
   event.target.minCust.value = null;
