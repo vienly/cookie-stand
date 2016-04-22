@@ -1,22 +1,80 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>title</title>
-    <link href='https://fonts.googleapis.com/css?family=Londrina+Shadow|Tangerine' rel='stylesheet' type='text/css'>
-    <!-- <link href='https://fonts.googleapis.com/css?family=Tangerine' rel='stylesheet' type='text/css'> -->
+    <title>Pat's Salmon Cookies</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans|Josefin+Sans|Amatic+SC|Andika|Quicksand' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="css/normalize.css" type="text/css">
+    <link rel="stylesheet" href="css/skeleton.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
+
   </head>
+
   <body>
+    <h1 class='page-heading'>Pat's Famous Salmon Cookies</h1>
+    <!-- <h2 class='page-subheading'>Seattle's Greatest Invention</h2> -->
+    <div class="container">
+      <header>
+        <ul class='navigation'>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Products</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </header>
 
-    <h1>Disgusting Fish Cookies</h1>
-    <h2>Grossest New Trend in Seattle</h2>
-    <div class="first">
-      <p>Picture of a Salmon<br />
-        <small>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi</small></p>
+      <div class="main-content">
+        <div class="row">
+          <div class="two columns">
+            <h5>Pat</h5>
+            <p>Pat doesn't want to show his face so this is the ony picture I have of him. Sorry.
+            <img src="img/shirt.jpg" /></p>
+          </div>
+          <div class="five columns">
+            <h5>My Story</h5>
+            <p>Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows. Some pilots get picked and become television programs. Some don't, become nothing. She starred in one of the ones that became nothing.<br>
+            <img src="img/salmon.png" />
+            <img src="img/family.jpg" />
+            <img src="img/cutter.jpeg" />
+            </p>
+          </div>
+          <div class="five columns">
+            <h5>My Cookies</h5>
+            <p>Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.
+            <img src="img/chinook.jpg" />
+            <img src="img/frosted-cookie.jpg" />
+            <img src="img/fish.jpg" />
+          </p>
+          </div>
+
+        </div>
+      </div>
+
+      <footer>
+        <form>
+          <legend>Leave us a message</legend>
+          <div class="row">
+            <div class="six columns">
+              <label for="exampleEmailInput">Your email</label>
+              <input class="u-full-width" type="email" placeholder="test@mailbox.com" id="exampleEmailInput">
+            </div>
+            <div class="six columns">
+              <label for="exampleRecipientInput">Reason for contacting</label>
+              <select class="u-full-width" id="exampleRecipientInput">
+                <option value="Option 1">Questions</option>
+                <option value="Option 2">Admiration</option>
+                <option value="Option 3">Can I get your number?</option>
+              </select>
+            </div>
+          </div>
+          <label for="exampleMessage">Message</label>
+          <textarea class="u-full-width" placeholder="That's some nice fucking salmon cookies you got..." id="exampleMessage"></textarea>
+          <input class="messageBtn" type="submit" value="Submit">
+        </form>
+
+      </footer>
     </div>
-    <div class='background-image'></div>
-
     <script src="js/app.js" type="text/javascript"></script>
   </body>
 </html>
