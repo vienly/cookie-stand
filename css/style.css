@@ -1,50 +1,120 @@
+.hide {
+  display: none;
+}
+
+.page-heading {
+  font-family: 'Amatic SC', sans-serif;;
+  text-align: center;
+  font-size: 72px;
+  color: #ff584c;
+  /*margin: 60px 0 0 0;*/
+}
+
+.page-subheading {
+  font-family: 'Andika', sans-serif;
+  text-align: center;
+  font-size: 33px;
+  color: #232323;
+  /*margin: 60px 0 0 0;*/
+  /*background: #232323;*/
+}
+
+.navigation {
+  list-style: none;
+  margin: 0;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: flex-end;
+}
+
+.navigation a {
+  text-decoration: none;
+  font-variant: small-caps;
+  display: block;
+  padding: 1em;
+  color: #79CDCD;
+  font-size: 18px
+}
+
 body {
-  font-family: helvetica, sans-serif;
-  margin: 0 auto;
-  max-width: 600px;
-  background: #232323;
+  /*font-family: 'Andika', sans-serif;*/
+  font-family: 'Josefin Sans', sans-serif;
+  color: black;
+  background: seashell;
 }
 
-div {
-  height: 200px;
-  background-size: contain;
-  background-repeat: no-repeat;
-  position: relative;
-  margin: 40px 0 0 0;
-  border-radius: 12px;
+header, footer {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 16px;
+  /*padding: 0px;*/
+  background: black;
+  color: white;
 }
 
-h1 {
-  font-family: 'Londrina Shadow', cursive;
-  text-align: center;
-  font-size: 66px;
-  color: #aaaaaa;
-  margin: 60px 0 0 0;
+h5 {
+  font-family: 'Helvetica', sans-serif;
+  /*font-variant: small-caps;*/
+  font-weight: bold;
+  color: black;
+  font-size: 14px;
 }
 
-h2 {
-  font-family: 'Tangerine', cursive;
-  text-align: center;
-  font-size: 48px;
-  color: #bbbbbb;
-  margin: 0px 0 70px 0;
+.main-content {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -webkit-box;
+  display: -moz-box;
+  display: flex;
+  /*background-color: #F2EDEB;*/
+  flex-grow: 1;
+  /*background-color: #ddd;*/
+  color: #999;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: lighter;
+  font-size: 12px;
+  text-align: justify;
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+
+
+.col-1 {
+  background: lightpink;
+  order: -1;
+}
+
+.col-2 {
+  background: seashell;
+  flex-grow: 1;
+}
+
+form {
+  padding: 1em;
+  font-size: 14px;
+}
+
+legend {
+  font-variant: small-caps;
+  color: #79CDCD;
+  font-size: 18px;
+}
+
+button {
+  align-self: center;
+  color: white;
+}
+
+img {
+  vertical-align: middle;
+  max-height: 100px;
+  max-width: 100px;
 }
 
 p {
-  color: rgba(255,255,255,1);
-  background: black;
-  background: linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
-  background: -webkit-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
-  background: -moz-linear-gradient(bottom, rgba(0,0,0,1), rgba(0,0,0,.4));
-  padding: 10px;
-  line-height: 28px;
-  text-align: justify;
-  position: absolute;
-  bottom: 0;
-  margin: 0;
-  height: 80px;
-}
-
-.first {
-  background-image: url('../img/salmon.png');
+  margin: 0px 20px 0 20px;
 }
