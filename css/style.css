@@ -5,7 +5,7 @@
 .page-heading {
   font-family: 'Amatic SC', sans-serif;;
   text-align: center;
-  font-size: 52px;
+  font-size: 72px;
   color: #ff584c;
   /*margin: 60px 0 0 0;*/
 }
@@ -34,6 +34,7 @@
 
 .navigation a {
   text-decoration: none;
+  font-variant: small-caps;
   display: block;
   padding: 1em;
   color: #79CDCD;
@@ -53,14 +54,14 @@ header, footer {
   /*padding: 0px;*/
   background: black;
   color: white;
-  font-variant: small-caps;
 }
 
 h5 {
-  font-variant: small-caps;
+  font-family: 'Helvetica', sans-serif;
+  /*font-variant: small-caps;*/
   font-weight: bold;
   color: black;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 .main-content {
@@ -71,9 +72,11 @@ h5 {
   display: flex;
   /*background-color: #F2EDEB;*/
   flex-grow: 1;
-  background-color: #ddd;
+  /*background-color: #ddd;*/
   color: #999;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Helvetica', sans-serif;
+  font-weight: lighter;
+  font-size: 12px;
   text-align: justify;
   margin-bottom: 50px;
   margin-top: 50px;
@@ -96,6 +99,7 @@ form {
 }
 
 legend {
+  font-variant: small-caps;
   color: #79CDCD;
   font-size: 18px;
 }
